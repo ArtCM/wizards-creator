@@ -21,7 +21,7 @@ export default function CreatedWizard({ params }: { params: { id: number } }) {
 
   return (
     <div>
-      <div>
+      <div className="flex flex-col">
         <Steps
           current={current}
           items={listWizardSaves[params.id].listStepsItens}
@@ -32,9 +32,9 @@ export default function CreatedWizard({ params }: { params: { id: number } }) {
         />
       </div>
 
-      <div>
+      <div className="mt-6 flex flex-col itens-center justify-center">
         {componentsWizardCreated.map((component, index) => (
-          <div key={index}>{component}</div>
+          <div className="my-2 text-center" key={index}>{component}</div>
         ))}
       </div>
     </div>
