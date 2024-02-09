@@ -32,8 +32,8 @@ export function ViewerWizard() {
   }, [listComponents, listPageWizard, current]);
 
   return (
-    <div className="flex flex-col gap-8 p-8 min-h-screen w-full">
-      <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col gap-8 p-8 h-full w-full">
+      <div className="flex flex-col justify-start items-start min-h-24">
         <Steps
           current={pageWizard.data.currentStep}
           onChange={onChangeCurrent}

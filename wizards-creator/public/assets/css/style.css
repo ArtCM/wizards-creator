@@ -8,23 +8,7 @@ nav li{
 }
 
 #mobile-nav div *{
-    @apply text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium
+    @apply text-gray-300 hover:bg-gray-700 hover:text-secondary block rounded-md px-3 py-2 text-base font-medium
 }
 
-/* Inputs types */
-.Input-types .Input-type__item p{
-    
-}
 
-.Input-types .Input-type__item{
-    @apply bg-slate-500 rounded-sm hover:bg-secondary cursor-pointer flex flex-col items-center justify-center p-4 m-1
-}
-
-/* Wizard Inputs */
-.wizard-step__name{
-    @apply my-5 w-full flex items-center justify-center flex-col
-}
-
-.wizard-step__list--input{
-    @apply mb-3 bg-gray-100 px-3 py-5 rounded-lg w-full flex items-center justify-center flex-col relative
-}

@@ -110,12 +110,12 @@ export function StepsWizard() {
         <Input onChange={handleTitle} value={title} />
       </div>
       <div className="flex flex-col gap-4 justify-center items-center">
-        <label htmlFor="">
+        <label className="text-center" htmlFor="">
           Escolha o componente que deseja adicionar em seu Wizard:
         </label>
-        <div className="flex flex-row gap-10 justify-between items-center w-full">
+        <div className="flex flex-col w-full  gap-4 lg:flex-row  justify-center items-center ">
           <Select
-            className="w-72"
+            className="lg:w-full placeholder:text-black"
             options={componentsOptions}
             placeholder="Selecione uma opção"
             onChange={(e) => handleSelectItem(e, "component")}
@@ -149,7 +149,7 @@ export function StepsWizard() {
           renderItem={(item) => {
             return (
               <List.Item>
-                <div className="flex justify-between w-full">
+                <div className="flex justify-between w-full bg-white p-2 rounded-md">
                   {firstLetterUpperCase(item.component)}
                   <DeleteOutlined
                     style={{ color: "#ef4444" }}

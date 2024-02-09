@@ -5,11 +5,11 @@ import { ViewerWizard } from "../viewerWizard";
 export function WizardCreate() {
   return (
     <div className="w-full h-full">
-      <div className="flex justify-start items-center h-full">
-        <div className="border-r-2 border-gray-950 w-2/6 p-5 min-h-screen flex justify-center ">
+      <div className="flex justify-start items-start h-full flex-col lg:flex-row">
+        <div className="border-r-2 border-primary w-full lg:w-2/6 p-5 h-full flex justify-center bg-slate-300 rounded-md">
           <StepsWizard />
         </div>
-        <div className="min-h-screen w-full flex flex-col justify-start items-start">
+        <div className="h-full w-full lg:w-4/6 flex flex-col justify-start items-start">
           <ViewerWizard />
         </div>
       </div>
