@@ -29,19 +29,20 @@ export function StepsWizard() {
     data,
     cleanObjectData,
     addDirection,
+    addTitle,
     addName,
     addComponents,
     countCurrentStep,
   } = usePageWizardStore();
 
-  const { listPageWizard, listStepsItens, addPageWizard, addStepItem } =
-    useWizardStore();
+  const { listStepsItens, addPageWizard, addStepItem } = useWizardStore();
 
   const [selectItem, setSelectItem] = useState<IListComponents>(
     {} as IListComponents
   );
   const [direction, setDirection] = useState<string>("horizontal");
   const [title, setTitle] = useState<string>("");
+  const [name, setName] = useState<string>("");
 
   function handleDirection(e: any) {
     setDirection(e.target.value);
@@ -50,6 +51,10 @@ export function StepsWizard() {
 
   function handleTitle(e: any) {
     setTitle(e.target.value);
+    addTitle(e.target.value);
+  }
+  function handleName(e: any) {
+    setName(e.target.value);
     addName(e.target.value);
   }
 
@@ -94,20 +99,32 @@ export function StepsWizard() {
   return (
     <div className="flex flex-col gap-8">
       {data.currentStep === 0 && (
-        <div className="flex flex-col gap-4 justify-center items-center">
-          <label htmlFor="">Escolha a orientação do Wizard:</label>
-          <Radio.Group
-            optionType="button"
-            options={radioGroupOptions}
-            value={direction}
-            onChange={handleDirection}
-          />
-        </div>
+        <>
+          <div className="flex flex-col gap-4 justify-center items-center">
+            <label
+              htmlFor=""
+              className="flex flex-col gap-4 justify-center items-center"
+              >
+              Escolha o Nome da Wizard:
+            </label>
+            <Input onChange={handleName} value={name} />
+          </div>
+          
+          <div className="flex flex-col gap-4 justify-center items-center">
+            <label htmlFor="">Escolha a orientação do Wizard:</label>
+            <Radio.Group
+              optionType="button"
+              options={radioGroupOptions}
+              value={direction}
+              onChange={handleDirection}
+            />
+          </div>
+        </>
       )}
-
+      
       <div className="flex flex-col gap-4 justify-center items-center">
         <label htmlFor="">Escolha o nome da página do Wizard:</label>
-        <Input required onChange={handleTitle} value={title} />
+        <Input onChange={handleTitle} value={title} />
       </div>
       <div className="flex flex-col gap-4 justify-center items-center">
         <label className="text-center" htmlFor="">
@@ -121,7 +138,12 @@ export function StepsWizard() {
             onChange={(e) => handleSelectItem(e, "component")}
           />
           <div className="flex flex-col gap-2">
-            <Button type="primary" onClick={OnConfirmItemSelected}>
+            <Button type="primary" onClick={OnConfirmItemSelected} 
+            disabled={
+              selectItem.component === "" ||
+              selectItem.component === null ||
+              selectItem.component === undefined
+             }>
               Confirmar
             </Button>
           </div>
@@ -169,6 +191,11 @@ export function StepsWizard() {
             addStepItem(data.stepItems);
             countCurrentStep();
           }}
+          disabled={
+            data.stepItems.title === "" ||
+            data.stepItems.title === null ||
+            data.stepItems.title === undefined
+          }
         >
           Criar Página
         </Button>

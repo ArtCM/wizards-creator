@@ -1,23 +1,25 @@
 import {
   useListComponents,
   usePageWizardStore,
+  useSaveWizardsStore,
   useWizardStore,
 } from "@/store/wizardStore";
 import { gerationComponentsOnScreen } from "@/utils/gerationComponentsOnScreen";
 import { Button, Steps } from "antd";
 import { useMemo, useState } from "react";
 
+import { useRouter } from "next/navigation";
+
 export function ViewerWizard() {
+  const router = useRouter();
+
   const pageWizard = usePageWizardStore();
-  const { listPageWizard, listStepsItens } = useWizardStore();
+  const { listPageWizard, listStepsItens, clearWizard, ...restPageWizard } =
+    useWizardStore();
+  const { saveWizard, listWizardSaves } = useSaveWizardsStore();
 
   const { listComponents } = useListComponents();
   const [current, setCurrent] = useState<number>(0);
-
-  const handleLimparWizard = () => {
-    const wizardStore = useWizardStore();
-    wizardStore.clearStepItems();
-  };
 
   const onChangeCurrent = (value: number) => {
     setCurrent(value);
@@ -37,10 +39,13 @@ export function ViewerWizard() {
   }, [listComponents, listPageWizard, current]);
 
   return (
-    <div className="flex flex-col gap-8 p-8 h-full w-full">
-      <div className="flex flex-col justify-start items-start min-h-24">
+    <div className="flex flex-col gap-8 p-8 min-h-screen w-full">
+      <div className="flex justify-center items-center mb-10">
+        <h1>{pageWizard.data.name}</h1>
+      </div>
+      <div className="flex flex-col justify-center items-center">
         <Steps
-          current={pageWizard.data.currentStep}
+          current={current}
           onChange={onChangeCurrent}
           items={
             listPageWizard.length === 0
@@ -56,13 +61,34 @@ export function ViewerWizard() {
         </div>
       </div>
       <div className="flex w-full justify-center items-center gap-8 mt-8 self-end align-bottom ">
-        <Button type="primary" size="large">
+        <Button
+          type="primary"
+          size="large"
+          onClick={() => {
+            saveWizard({
+              listPageWizard,
+              listStepsItens,
+              clearWizard,
+              ...restPageWizard,
+            });
+
+            router.push("Wizards");
+          }}
+        >
           Salvar Wizard
         </Button>
-        <Button type="primary" danger size="large" onClick={handleLimparWizard}>
+        <Button
+          type="primary"
+          danger
+          size="large"
+          onClick={() => {
+            pageWizard.cleanObjectData();
+            clearWizard();
+          }}
+        >
           Limpar Wizard
         </Button>
       </div>
-    </div>
-  );
+    </div>
+  );
 }

@@ -13,6 +13,7 @@ export interface Items {
 }
 
 interface IWIzardPageProps {
+  name: string;
   direction: "horizontal" | "vertical";
   components: IListComponents[];
   currentStep: number;
@@ -22,6 +23,7 @@ interface IWIzardPageProps {
 interface IPagewizard {
   data: IWIzardPageProps;
   cleanObjectData: () => void;
+  addTitle: (name: string) => void;
   addName: (name: string) => void;
   addDirection: (direction: "horizontal" | "vertical") => void;
   addComponents: (components: IListComponents[]) => void;
@@ -40,6 +42,12 @@ interface IWizard {
   listStepsItens: Items[];
   addPageWizard: (page: IWIzardPageProps) => void;
   addStepItem: (item: Items) => void;
+  clearWizard: () => void;
+}
+
+interface ISaveWizards {
+  listWizardSaves: IWizard[];
+  saveWizard: (wizard: IWizard) => void;
 }
 
 export const usePageWizardStore = create<IPagewizard>((set) => {
@@ -51,6 +59,7 @@ export const usePageWizardStore = create<IPagewizard>((set) => {
       },
       components: [],
       direction: "horizontal",
+      name: "",
     },
 
     cleanObjectData: () =>
@@ -69,11 +78,19 @@ export const usePageWizardStore = create<IPagewizard>((set) => {
     addDirection(direction) {
       set((state) => ({ data: { ...state.data, direction } }));
     },
-    addName(name) {
+    addTitle(name) {
       set((state) => ({
         data: {
           ...state.data,
           stepItems: { ...state.data.stepItems, title: name },
+        },
+      }));
+    },
+    addName(text) {
+      set((state) => ({
+        data: {
+          ...state.data,
+          name: text,
         },
       }));
     },
@@ -117,8 +134,23 @@ export const useWizardStore = create<IWizard>((set) => {
         listStepsItens: [...state.listStepsItens, item],
       }));
     },
-    clearStepItems() {
-      set((state) => ({ listStepsItens: [] }));
+
+    clearWizard() {
+      set((state) => ({
+        listStepsItens: [],
+        listPageWizard: [],
+      }));
     },
   };
+});
+
+export const useSaveWizardsStore = create<ISaveWizards>((set) => {
+  return {
+    listWizardSaves: [],
+    saveWizard(wizard) {
+      set((state) => ({
+        listWizardSaves: [...state.listWizardSaves, wizard],
+      }));
+    },
+  };
 });
