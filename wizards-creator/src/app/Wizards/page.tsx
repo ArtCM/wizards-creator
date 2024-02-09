@@ -1,11 +1,5 @@
-import type { Metadata } from "next";
 import WizardCard from '../components/WizardCard';
 import React from 'react';
-
-export const metadata: Metadata = {
-    title: "Visualizar Wizards | Wizards Creator",
-    description: "Crie suas wizards de forma dinâmica e prática",
-  };
 
 export default function WizardsView() {
     return (

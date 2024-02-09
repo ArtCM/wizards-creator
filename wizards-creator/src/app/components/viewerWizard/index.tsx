@@ -14,6 +14,11 @@ export function ViewerWizard() {
   const { listComponents } = useListComponents();
   const [current, setCurrent] = useState<number>(0);
 
+  const handleLimparWizard = () => {
+    const wizardStore = useWizardStore();
+    wizardStore.clearStepItems();
+  };
+
   const onChangeCurrent = (value: number) => {
     setCurrent(value);
     pageWizard.countCurrentStep();
@@ -54,7 +59,7 @@ export function ViewerWizard() {
         <Button type="primary" size="large">
           Salvar Wizard
         </Button>
-        <Button type="primary" danger size="large">
+        <Button type="primary" danger size="large" onClick={handleLimparWizard}>
           Limpar Wizard
         </Button>
       </div>

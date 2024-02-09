@@ -1,12 +1,6 @@
 import Image from "next/image";
 import Link from 'next/link'
 
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Home | Wizards Creator",
-  description: "Crie suas wizards de forma dinâmica e prática",
-};
 
 export default function Home() {
   return (

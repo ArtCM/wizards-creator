@@ -107,7 +107,7 @@ export function StepsWizard() {
 
       <div className="flex flex-col gap-4 justify-center items-center">
         <label htmlFor="">Escolha o nome da página do Wizard:</label>
-        <Input onChange={handleTitle} value={title} />
+        <Input required onChange={handleTitle} value={title} />
       </div>
       <div className="flex flex-col gap-4 justify-center items-center">
         <label className="text-center" htmlFor="">

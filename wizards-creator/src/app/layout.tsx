@@ -4,6 +4,12 @@ import "../../public/assets/css/style.css";
 import Navbar from '@/app/components/navbar';
 import Footer from '@/app/components/footer';
 import { AntdRegistry } from "@ant-design/nextjs-registry";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Home | Wizards Creator",
+  description: "Crie suas wizards de forma dinâmica e prática",
+};
 
 const inter = Inter({ subsets: ["latin"] });
 

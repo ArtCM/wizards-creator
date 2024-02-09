@@ -117,5 +117,8 @@ export const useWizardStore = create<IWizard>((set) => {
         listStepsItens: [...state.listStepsItens, item],
       }));
     },
+    clearStepItems() {
+      set((state) => ({ listStepsItens: [] }));
+    },
   };
 });
