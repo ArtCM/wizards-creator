@@ -33,15 +33,15 @@ It consists of a system for dynamic creation of Wizards, acting as a step system
 </div>
 
 <div align="center" markdown="1">
-##Tecnologias utilizadas:
--Next.js 14
--Typescript
--Tailwind
--Zustand
--Cypress
-
-Libs extras:
-- antd
-- @ant-design/icons
+## Tecnologias utilizadas:
+-Next.js 14<br>
+-Typescript<br>
+-Tailwind<br>
+-Zustand<br>
+-Cypress<br>
+<br>
+Libs extras:<br>
+- antd<br>
+- @ant-design/icons<br>
 - @ant-design/nextjs-registry
 </div>
