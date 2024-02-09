@@ -33,7 +33,7 @@ It consists of a system for dynamic creation of Wizards, acting as a step system
 </div>
 
 <div align="center" markdown="1">
-## Tecnologias utilizadas:
+## Tecnologias utilizadas:<br>
 -Next.js 14<br>
 -Typescript<br>
 -Tailwind<br>
