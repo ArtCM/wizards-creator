@@ -31,9 +31,12 @@ Project created for a front-end job application process.
 It consists of a system for dynamic creation of Wizards, acting as a step system where the user can input steps and then view the created wizard.
 
 </div>
-
+<br>
 <div align="center" markdown="1">
-## Tecnologias utilizadas:<br>
+  
+## Tecnologias utilizadas:
+
+
 -Next.js 14<br>
 -Typescript<br>
 -Tailwind<br>
@@ -41,7 +44,7 @@ It consists of a system for dynamic creation of Wizards, acting as a step system
 -Cypress<br>
 <br>
 Libs extras:<br>
-- antd<br>
-- @ant-design/icons<br>
-- @ant-design/nextjs-registry
+antd<br>
+@ant-design/icons<br>
+@ant-design/nextjs-registry
 </div>
