@@ -15,7 +15,7 @@ Ver: 0.0.1 - Last update: 09/02/2024
 
 <div align="center" markdown="1">
 
-## About/Sobre
+# About/Sobre
 
 PT-BR<br>
 
