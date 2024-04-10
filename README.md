@@ -19,8 +19,6 @@ Ver: 0.0.1 - Last update: 09/02/2024
 
 PT-BR<br>
 
-Projeto criado para processo seletivo de vaga de front-end.
-<br>
 Consiste em um sistema para criação dinâmica de Wizards, e atua como um sistema de steps onde o usuário pode inserir inputs, steps e depois visualizar a wizard criada.
 <br>
 
